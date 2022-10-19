@@ -1,0 +1,50 @@
+<div
+  class="wrapper rounded-xl w-1/5 bg-slate-800 py-10 px-12 max-w-2xl min-w-fit"
+>
+  <div class="w-full flex justify-center mb-5">
+    <app-search-bar (weather)="getSearch($event)"></app-search-bar>
+  </div>
+  <ng-container *ngIf="weather">
+    <div class="flex flex-col items-center justify-center mb-12">
+      <p class="text-slate-300 text-3xl font-semibold text-center">
+        {{ weather.name }}, {{ weather.sys.country }}
+      </p>
+      <p class="text-orange-400 text-md">
+        Última revisión
+        {{ this.weather.dt * 1000 | date: "LLL dd, HH:mm" }}
+      </p>
+    </div>
+    <div class="flex w-100 justify-center items-center gap-5 mb-12">
+      <div class="flex flex-col justify-center">
+        <img
+          src="http://openweathermap.org/img/wn/{{
+            weather.weather[0].icon
+          }}@2x.png"
+          alt=""
+        />
+      </div>
+      <div class="flex flex-col items-left gap-1">
+        <p class="text-slate-300 text-6xl font-semibold">
+          {{ weather.main.temp }}°C
+        </p>
+        <p class="text-slate-400 text-lg font-medium">
+          Sensación de {{ weather.main.feels_like }}°C
+        </p>
+      </div>
+    </div>
+    <div class="flex w-100 justify-center items-center gap-5">
+      <div class="flex items-center gap-3">
+        <img width="30" src="../../../../assets/images/wind.svg" alt="" />
+        <p class="text-slate-300 text-xl font-medium">
+          {{ weather.wind.speed }}m/s
+        </p>
+      </div>
+      <div class="flex items-center gap-3">
+        <img width="30" src="../../../../assets/images/humidity.svg" alt="" />
+        <p class="text-slate-300 text-xl font-medium">
+          {{ weather.main.humidity }}%
+        </p>
+      </div>
+    </div>
+  </ng-container>
+</div>

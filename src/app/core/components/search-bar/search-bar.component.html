@@ -1,0 +1,9 @@
+<form [formGroup]="searchBar" (submit)="searchWeatherOfCity()">
+  <input
+    class="bg-slate-700 rounded-lg px-2 py-1 text-slate-400"
+    type="text"
+    placeholder="Ingresá una ciudad"
+    formControlName="weatherCtrl"
+  />
+  <!-- <button class="text-slate-300" type="submit">Buscar</button> -->
+</form>
